@@ -6,8 +6,7 @@ def err(info):
 	print (info)
 	sys.exit(1)
 
-#__main__
-if __name__ == '__main__':
+def main():
 	if len(sys.argv) == 1:
 		err('ERROR: You must enter the program directory.\nExample: python createMemfiles.py C_Example')
 	if os.path.exists(sys.argv[1]) == False:
@@ -36,13 +35,12 @@ if __name__ == '__main__':
 	if os.path.exists(infilename) == False:
 		err('file "FPGA_Ram_modelsim.txt" not exit')
 
-	#/r/n
+	#/r/n in NT or /n in UNIX
 	sysstr = platform.system()
 	if (sysstr.find("Windows") != -1) or (sysstr.find("NT") != -1):
 		newlinetag = '\r\n'
 	else:
 		newlinetag = '\n'
-	
 
 	#openfile
 	infile = open(infilename, 'r')
@@ -104,4 +102,8 @@ if __name__ == '__main__':
 	outfile_bootmif.close()
 	outfile_programmif.close()
 	print ('Memfiles created successfully.')
+
+if __name__ == '__main__':
+	main()
+	
 		
